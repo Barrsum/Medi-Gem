@@ -13,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import DoctorRoute from './components/DoctorRoute';
+import DoctorProfilePage from './pages/DoctorProfilePage';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         
         {/* Doctor Route */}
         <Route path="/doctor" element={ <DoctorRoute> <DoctorPage /> </DoctorRoute> } />
+        <Route path="/doctor/profile" element={ <DoctorRoute> <DoctorProfilePage /> </DoctorRoute> } />
 
         {/* Auth Routes */}
         <Route path="/login" element={<LoginPage />} />
