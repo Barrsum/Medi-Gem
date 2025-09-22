@@ -79,9 +79,15 @@ export default function DashboardPage() {
             <Link to="/chat" className="p-6 rounded-lg transition-all duration-300 cursor-pointer
                   bg-gray-400/10 backdrop-blur-lg border border-gray-100/20
                   hover:border-gray-100/40 hover:bg-gray-400/20">
-    <h3 className="text-2xl font-semibold text-gray-100">Chat with AI Doctor</h3>
-    <p className="mt-2 text-gray-400">Get quick answers to your medical questions from our AI.</p>
-</Link>
+                <h3 className="text-2xl font-semibold text-gray-100">Chat with AI Doctor</h3>
+                <p className="mt-2 text-gray-400">Get quick answers to your medical questions from our AI.</p>
+            </Link>
+            <Link to="/profile" className="p-6 rounded-lg transition-all duration-300 cursor-pointer
+                      bg-gray-400/10 backdrop-blur-lg border border-gray-100/20
+                      hover:border-gray-100/40 hover:bg-gray-400/20 md:col-span-2">
+                <h3 className="text-2xl font-semibold text-gray-100">My Medical Profile</h3>
+                <p className="mt-2 text-gray-400">Update your personal information and view your medical history.</p>
+            </Link>
           </div>
 
           {/* My Appointments Section */}

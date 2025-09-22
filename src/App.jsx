@@ -1,24 +1,37 @@
+// src/App.jsx
 import { Routes, Route } from 'react-router-dom';
+// Page Imports
+import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import DashboardPage from './pages/DashboardPage';
+import AdminPage from './pages/AdminPage';
+import DoctorPage from './pages/DoctorPage';
 import AppointmentPage from './pages/AppointmentPage';
-import AdminPage from './pages/AdminPage'; // 1. Import AdminPage
-import ProtectedRoute from './components/ProtectedRoute';
-import AdminRoute from './components/AdminRoute'; // 2. Import AdminRoute
 import ChatPage from './pages/ChatPage';
+import ProfilePage from './pages/ProfilePage';
+// Route Protection Imports
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
+import DoctorRoute from './components/DoctorRoute';
+
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Routes>
-        {/* User Routes */}
-        <Route path="/" element={ <ProtectedRoute> <DashboardPage /> </ProtectedRoute> } />
+        {/* Role-based Home */}
+        <Route path="/" element={ <ProtectedRoute> <HomePage /> </ProtectedRoute> } />
+        
+        {/* User Specific Routes */}
         <Route path="/book-appointment" element={ <ProtectedRoute> <AppointmentPage /> </ProtectedRoute> } />
         <Route path="/chat" element={ <ProtectedRoute> <ChatPage /> </ProtectedRoute> } />
-        
+        <Route path="/profile" element={ <ProtectedRoute> <ProfilePage /> </ProtectedRoute> } />
+
         {/* Admin Route */}
-        <Route path="/admin" element={ <AdminRoute> <AdminPage /> </AdminRoute> } /> {/* 3. Add the Admin Route */}
+        <Route path="/admin" element={ <AdminRoute> <AdminPage /> </AdminRoute> } />
+        
+        {/* Doctor Route */}
+        <Route path="/doctor" element={ <DoctorRoute> <DoctorPage /> </DoctorRoute> } />
 
         {/* Auth Routes */}
         <Route path="/login" element={<LoginPage />} />
@@ -28,4 +41,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

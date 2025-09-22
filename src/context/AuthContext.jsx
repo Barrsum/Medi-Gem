@@ -1,3 +1,4 @@
+// src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
@@ -11,46 +12,41 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userProfile, setUserProfile] = useState(null); // New state for Firestore profile
+  const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      
-      // If user logs out, clear profile
       if (!user) {
         setUserProfile(null);
         setLoading(false);
       }
     });
-
     return unsubscribeAuth;
   }, []);
 
-  // New useEffect to listen for profile changes when currentUser is available
   useEffect(() => {
     if (currentUser) {
+      setLoading(true); // Start loading when currentUser is found
       const userDocRef = doc(db, 'users', currentUser.uid);
       const unsubscribeProfile = onSnapshot(userDocRef, (doc) => {
         if (doc.exists()) {
           setUserProfile({ uid: doc.id, ...doc.data() });
         } else {
-          // Handle case where user exists in Auth but not Firestore
           setUserProfile(null);
         }
-        setLoading(false);
+        setLoading(false); // Stop loading after profile is fetched
       });
-      
-      return unsubscribeProfile; // Cleanup profile listener
+      return unsubscribeProfile;
     }
   }, [currentUser]);
 
-
   const value = {
     currentUser,
-    userProfile, // Expose the profile
-    isAdmin: userProfile?.role === 'admin', // Convenience flag
+    userProfile,
+    isAdmin: userProfile?.role === 'admin',
+    isDoctor: userProfile?.role === 'doctor', // New convenience flag
   };
 
   return (
