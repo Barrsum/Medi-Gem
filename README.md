@@ -2,7 +2,7 @@
 
 MEDI-GEM is a modern, feature-rich web application designed to streamline the patient-doctor appointment process. It features a sleek, glassmorphic dark-theme UI and leverages the power of NVIDIA's Nemotron for an AI-powered medical assistant chat. The platform supports distinct roles for Users (Patients), Doctors, and Admins, each with a tailored dashboard and specific permissions.
 
-![MEDI-GEM Demo](https://placehold.co/800x450/000000/FFFFFF/png?text=Replace+this+with+a+GIF+of+your+app!)
+![MEDI-GEM Demo](/public/image.png)
 *(Suggestion: Use a screen recorder like GIPHY Capture or LICEcap to create a GIF showcasing the user login, booking an appointment, and the doctor approving it. Replace the placeholder link above.)*
 
 ## ✨ Features
